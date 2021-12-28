@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         //
-        return view('tasks.index');
+        //return view('tasks.index');
+        $tasks = Task::where('user_id', $request->user()->id)->get();
+        return view('tasks.index', [
+            'tasks' => $tasks,
+        ]);
     }
     public function create()
     {
