@@ -49,13 +49,18 @@ class TaskController extends Controller
     }
     public function destroy(Request $request, Task $task)
     {
-        //
+        //授權
         $this->authorize('destroy', $task);
+
+        //刪除任務
+        $task->delete();
+        return redirect('/tasks');
     }
 
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
 }
