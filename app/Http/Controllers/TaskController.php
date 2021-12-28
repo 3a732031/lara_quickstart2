@@ -47,9 +47,10 @@ class TaskController extends Controller
     {
         //
     }
-    public function destroy($id)
+    public function destroy(Request $request, Task $task)
     {
         //
+        $this->authorize('destroy', $task);
     }
 
     public function __construct()
