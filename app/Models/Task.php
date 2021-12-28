@@ -9,4 +9,8 @@ class Task extends Model
 {
     use HasFactory;
     protected $fillable = ['name'];/* name 屬性應該能被「批量賦值」*/
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
